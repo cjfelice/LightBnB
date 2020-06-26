@@ -45,7 +45,7 @@ exports.getUserWithId = getUserWithId;
  * @param {{name: string, password: string, email: string}} user
  * @return {Promise<{}>} A promise to the user.
  */
-const addUser =  function(object) {
+const addUser = function(object) {
   return pool.query(`
   INSERT INTO users (name, email, password)
   VALUES ($1, $2, $3)
@@ -53,11 +53,6 @@ const addUser =  function(object) {
   `, [object.name, object.email, object.password])
     .then(res => res.rows[0]);
 };
-//   const userId = Object.keys(users).length + 1;
-//   user.id = userId;
-//   users[userId] = user;
-//   return Promise.resolve(user);
-// }
 exports.addUser = addUser;
 
 /// Reservations
@@ -172,6 +167,3 @@ const addProperty = function(object) {
     .then(res => res.rows[0]);
 };
 exports.addProperty = addProperty;
-
-INSERT INTO properties (owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, post_code) 
-VALUES (1, 'Hellhole', 'Big!', 'url', 'url', 300, 2, 1, 16, 'Canada', 'Rue leFleur', 'Cold Lake', 'Alberta', 'f5r3wd'),
